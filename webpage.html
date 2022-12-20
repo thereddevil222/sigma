@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Protected Website</title>
+</head>
+<body>
+  <h1>Welcome to the Password Protected Website</h1>
+  <p>Please enter your username and password to access the site:</p>
+  <form action="login.php" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+
+<?php
+  // Validate username and password
+  if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if ($username == "miner1" && $password == "dog1") {
+      // Display protected content and congratulatory message
+      echo "<h1>Congratulations!</h1>";
+      echo "<p>You have successfully accessed the protected content of the website. Congratulations!</p>";
+      echo "<h2>Protected Content</h2>";
+      echo "<p>This is the protected content of the website. Only users who have entered the correct username and password can view it.</p>";
+    } else {
+      // Display error message
+      echo "<p>Incorrect username or password. Please try again.</p>";
+    }
+  }
+?>
